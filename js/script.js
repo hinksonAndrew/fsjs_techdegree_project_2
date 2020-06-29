@@ -11,6 +11,7 @@ showPage(list, page) uses the page passed in to find the min and max to set the
 display of the individual people to only show if it is within those values.
 */
 const showPage = (list, page) => {
+   let anchors = document.querySelectorAll('a');
    let min = page * 10 - 10;
    let max = page * 10;
    for (let i = 0; i < list.length; i++) {
@@ -18,6 +19,15 @@ const showPage = (list, page) => {
          list[i].style.display = '';
       } else {
          list[i].style.display = 'none';
+      }
+   }
+   //added this code to add the active class to the pages
+   for (let i = 0; i < anchors.length; i++) {
+      if (anchors[i].innerText === page) {
+         anchors[i].classList.add('active');
+         console.log('hello');
+      } else {
+         anchors[i].classList.remove('active');
       }
    }
 }
@@ -41,8 +51,8 @@ const appendPageLinks = (list) => {
    for (let i = 0; i < numOfPages; i++) {
       x += `<li><a href="#">${i+1}</a></li>`;
    }
-   
    pageList.innerHTML = x;
+
    showPage(list, 1);
 
    pageDiv.addEventListener('click', (e) => {
