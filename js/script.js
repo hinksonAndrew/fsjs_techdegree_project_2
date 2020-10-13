@@ -31,7 +31,7 @@ const searchList = (list) => {
             searchResults = [];
             for (let i = 0; i < list.length; i++) {
                 list[i].style.display = 'none';
-                if (h3[i].textContent.includes(input.value)) {
+                if (h3[i].textContent.includes(input.value.toLowerCase())) {
                     list[i].style.display = '';
                     searchResults.push(list[i]);
                 }
@@ -60,7 +60,7 @@ const searchList = (list) => {
         searchResults = [];
         for (let i = 0; i < list.length; i++) {
             list[i].style.display = 'none';
-            if (h3[i].textContent.includes(input.value)) {
+            if (h3[i].textContent.includes(input.value.toLowerCase())) {
                 list[i].style.display = '';
                 searchResults.push(list[i]);
             }
